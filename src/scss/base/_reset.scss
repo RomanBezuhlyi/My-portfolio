@@ -1,0 +1,73 @@
+html,
+body,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	line-height: 1.15;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+	font: inherit;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+input[type='checkbox'],
+input[type='radio'],
+input[type='file'] {
+	vertical-align: middle;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

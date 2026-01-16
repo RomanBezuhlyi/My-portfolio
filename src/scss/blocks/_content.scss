@@ -1,0 +1,244 @@
+@use '../abstracts' as *;
+
+.content {
+	padding: 44px 0;
+	background: $black;
+	@include box(100%);
+	@media (max-width: 991px) {
+		padding: 20px 0;
+	}
+}
+.name {
+	position: relative;
+	@include text-style(20px, 300, normal);
+	letter-spacing: -0.6px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	@media (max-width: 991px) {
+		@include text-style(18px, 300, normal);
+		letter-spacing: -0.4px;
+		margin-bottom: 16px;
+	}
+	&::before {
+		content: '';
+		position: absolute;
+		left: -15px;
+		top: 50%;
+		transform: translateY(-50%);
+		@include box(10px, 10px, 5px);
+		background: $accent;
+	}
+}
+.title {
+	@include text-style(48px, 600, normal, center);
+	letter-spacing: -1.44px;
+	margin-bottom: 30px;
+	@media (max-width: 991px) {
+		@include text-style(24px, 600, normal, center);
+		letter-spacing: 0px;
+		margin-bottom: 20px;
+	}
+}
+.tags {
+	@include flex(row, center, center, 30px);
+	flex-wrap: wrap;
+	margin-bottom: 60px;
+	@media (max-width: 991px) {
+		gap: 12px;
+		margin-bottom: 20px;
+	}
+}
+.tag {
+	@include center;
+	@include box(fit-content, 32px);
+	padding: 1px 22px;
+	color: $black;
+	@include text-style(16px, 600, normal, center);
+	letter-spacing: -0.48px;
+	border-radius: 3px;
+	background: $white;
+	@include transition;
+	@media (max-width: 991px) {
+		height: 24px;
+		padding: 1px 8px;
+		@include text-style(14px, 600, normal, center);
+	}
+	&.active {
+		color: $white;
+		background: $accent;
+	}
+	&:hover {
+		color: $white;
+		background: $accent;
+	}
+}
+.list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-bottom: 60px;
+	@media (max-width: 991px) {
+		grid-template-columns: repeat(2, 1fr);
+		margin-bottom: 20px;
+	}
+	@media (max-width: 480px) {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 12px;
+	}
+	&__card {
+		position: relative;
+		height: 284px;
+		border-radius: 10px;
+		border: 1px solid $white;
+		box-shadow: 0 0 36px $white;
+		overflow: hidden;
+		@include transition;
+		@media (max-width: 991px) {
+			height: 260px;
+			box-shadow: 0 0 32px $white;
+		}
+		@media (max-width: 480px) {
+			height: 240px;
+			box-shadow: 0 0 24px $white;
+		}
+		&:hover {
+			border-color: $accent;
+			box-shadow: 0 0 36px $accent;
+			.list__card-overlay {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__card-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		@include box(100%);
+		object-fit: cover;
+		z-index: 1;
+	}
+
+	&__card-tags {
+		position: absolute;
+		left: 20px;
+		bottom: 20px;
+		z-index: 2;
+		width: calc(100% - 40px);
+		@include flex(row, flex-start, flex-start, 5px);
+		flex-wrap: wrap;
+		@media (max-width: 991px) {
+			left: 10px;
+			bottom: 10px;
+			width: calc(100% - 20px);
+			gap: 4px;
+		}
+	}
+
+	&__card-tag {
+		@include center;
+		@include box(fit-content, 22px);
+		padding: 1px 5px;
+		color: $white;
+		@include text-style(13px, 400, normal, center);
+		letter-spacing: -0.39px;
+		border-radius: 3px;
+		background: $accent;
+		@media (max-width: 991px) {
+			height: 20px;
+			padding: 1px 4px;
+			@include text-style(12px, 400, normal, center);
+		}
+	}
+
+	&__card-overlay {
+		@include center;
+		position: absolute;
+		left: 0;
+		top: 0;
+		@include box(100%);
+		background: rgba(0, 0, 0, 0.8);
+		z-index: 3;
+		opacity: 0;
+		@include transition;
+	}
+
+	&__card-link {
+		@include center;
+		@include box(155px, 34px);
+		padding: 2px 5px;
+		color: $white;
+		@include text-style(16px, 400, normal, center);
+		letter-spacing: -0.48px;
+		border-radius: 5px;
+		background: $accent;
+		@include transition;
+		@media (max-width: 991px) {
+			@include box(150px, 30px);
+			padding: 2px 4px;
+			@include text-style(14px, 400, normal, center);
+		}
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
+.show-more-wrapper {
+	@include center;
+	margin-top: 20px;
+	@media (max-width: 991px) {
+		margin-top: 16px;
+	}
+}
+
+.show-more {
+	@include box(fit-content, 40px);
+	padding: 5px 25px;
+	color: $white;
+	@include text-style(16px, 600, normal, center);
+	border-radius: 5px;
+	background: $accent;
+	cursor: pointer;
+	@include transition;
+	@media (max-width: 991px) {
+		height: 36px;
+		padding: 4px 20px;
+		@include text-style(14px, 600, normal, center);
+	}
+	@media (max-width: 480px) {
+		width: 100%;
+	}
+	&:hover {
+		transform: scale(1.05);
+	}
+}
+
+.html-color {
+	background: #e34f26;
+}
+.css-color {
+	background: #1572b6;
+}
+.js-color {
+	color: #000000;
+	background: #f7df1e;
+}
+.wp-color {
+	background: #21759b;
+}
+.bootstrap-color {
+	background: #7952b3;
+}
+.figma-color {
+	background: #000000;
+}
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.show {
+	opacity: 1;
+	transform: translateY(0);
+}
